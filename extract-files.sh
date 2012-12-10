@@ -48,6 +48,8 @@ adb pull /system/lib/liboemcamera.so ../../../vendor/$MANUFACTURER/$DEVICE/propr
 adb pull /system/lib/libOmxCore.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOmxCore.so
 adb pull /system/lib/libOmxVdec.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOmxVdec.so
 adb pull /system/lib/libOmxVidEnc.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libOmxVidEnc.so
+adb pull /system/lib/hw/lights.mahimahi.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lights.mahimahi.so
+adb pull /system/lib/hw/sensors.mahimahi.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/sensors.mahimahi.so
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/device-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
@@ -96,7 +98,9 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/liboemcamera.so:system/lib/liboemcamera.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOmxCore.so:system/lib/libOmxCore.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOmxVdec.so:system/lib/libOmxVdec.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/lights.mahimahi.so:system/lib/hw/lights.mahimahi.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/sensors.mahimahi.so:system/lib/hw/sensors.mahimahi.so
 EOF
 
 ./setup-makefiles.sh
